@@ -1,111 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="/src/output.css">
-    <title>John's Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>John Dakshak - Front-end Developer / Backend Developer</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          montserrat: ['Montserrat', 'sans-serif'],
+          opensans: ['Open Sans', 'sans-serif'],
+        },
+        colors: {
+          accent: '#4fa3d1',
+        }
+      }
+    }
+  }
+</script>
+<style type="text/tailwindcss">
+  @layer utilities {
+    .clip-hero {
+      clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+    .clip-collar {
+      clip-path: polygon(30% 0, 70% 0, 100% 100%, 0% 100%);
+    }
+    .divider {
+      @apply flex items-center justify-center gap-2 my-3;
+    }
+    .divider::before,
+    .divider::after {
+      content: '';
+      @apply block w-16 h-px bg-gray-300;
+    }
+    .portfolio-item .overlay {
+      @apply opacity-0 transition-opacity duration-300;
+    }
+    .portfolio-item:hover .overlay {
+      @apply opacity-100;
+    }
+  }
+</style>
 </head>
-<body class="bg-black">
-    
-<!-- HEADER -->
+<body class="font-opensans">
 
-    <header>
-        <nav>
-            <div class="flex text-white justify-between items-center mx-20 p-5">
+  <!-- Dark Top Nav -->
+  <nav class="bg-neutral-900 px-10 py-3 flex items-center justify-end gap-8">
+    <a href="#about" class="font-montserrat text-[11px] font-semibold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">About Me</a>
+    <a href="#skills" class="font-montserrat text-[11px] font-semibold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Skills</a>
+    <a href="#portfolio" class="font-montserrat text-[11px] font-semibold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Portfolio</a>
+    <button onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})" class="font-montserrat text-[11px] font-semibold uppercase tracking-widest text-white border border-white rounded-full px-5 py-1.5 hover:bg-white hover:text-black transition-colors">Contact</button>
+  </nav>
 
-                <div class="logo flex items-center ml-32">
+  <!-- Hero Section — full viewport minus nav -->
+  <section class="relative bg-gray-100 overflow-hidden" style="height: calc(100vh - 44px);">
+    <!-- Dark diagonal right half -->
+    <div class="clip-hero absolute right-0 top-0 bottom-0 w-[55%] bg-neutral-800"></div>
 
-                    <div class="logcircle">
-                        <div class=" bg-yellow-400 rounded-full w-12 h-12 shadow-lg shadow-indigo-400"></div>
-                    </div>
-                    
-                    <span class="font-serif text-3xl font-bold relative right-7">JOHN</span>
+    <!-- Light side content — vertically centered -->
+    <div class="relative z-10 px-10 h-full flex flex-col justify-center">
 
-                </div>
-
-
-                <ul class="flex gap-5 text-sm font-mono">
-                    <li class="hover:text-yellow-300 hover:underline cursor-pointer"><a href="#">Home</a></li>
-                    <li class="hover:text-yellow-300 hover:underline cursor-pointer"><a href="#about">About</a></li>
-                    <li class="hover:text-yellow-300 hover:underline cursor-pointer">Resume</li>
-                    <li class="hover:text-yellow-300 hover:underline cursor-pointer">Services</li>
-                    <li class="hover:text-yellow-300 hover:underline cursor-pointer">Skills</li>
-                    <li class="hover:text-yellow-300 hover:underline cursor-pointer">Projects</li>
-                    <li class="hover:text-yellow-300 hover:underline cursor-pointer">My blog</li>
-                    <li class="hover:text-yellow-300 hover:underline cursor-pointer">Contact</li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-
-<!-- MAIN SECTION -->
-
-    <main>
-
-        <div class="flex items-center gap-20 ml-60 mt-40 leading-10 ">
-
-            <div class="md:flex-col opacity-0 animate-fade-from-top">
-                
-                <span class="text-yellow-400 font-serif tracking-widest">Hello!</span>
-
-                <div class="flex gap-3 mt-5">
-                    <span class="text-white font-bold text-5xl">I'm</span>
-                    <span  class="text-yellow-400 font-bold text-5xl">John</span>
-                </div>
-
-                <div>
-                    <span class="text-yellow-400 font-bold text-6xl">Dakshak</span>
-                </div>
-
-                <div>
-                    <span class="text-white font-bold text-2xl">A Frelance Web Designer</span>
-                </div>
-
-                <div class="flex gap-2">
-                    <button class="text-black bg-yellow-400 py-2 px-5 rounded-3xl font-bold text-sm tracking-widest hover:bg-gray-400 hover:text-white">HIRE ME</button>
-                    <button class="text-white text-xs font-bold border-2 border-white py-2 px-4 rounded-3xl tracking-widest hover:bg-white hover:text-black">MY WORKS</button>
-                </div>
-            </div>
-
-            <div class="lg:w-1/2 opacity-0 animate-slide-from-left"
-            style="animation-delay: 0.3s">
-                <img src="/dist/img/img 1.jpg" alt="" class="w-[500px] h-[300px]">
-            </div>
+      <!-- Logo + inner nav row — pinned top -->
+      <div class="absolute top-7 left-10 right-10 flex items-center gap-8">
+        <span class="font-montserrat font-black text-xl text-neutral-800 border-[3px] border-neutral-800 px-2 py-0.5">JD</span>
+        <div class="flex items-center gap-6 ml-2">
+          <a href="#about" class="font-montserrat text-[11px] font-semibold uppercase tracking-widest text-neutral-500 hover:text-black transition-colors">About Me</a>
+          <a href="#skills" class="font-montserrat text-[11px] font-semibold uppercase tracking-widest text-neutral-500 hover:text-black transition-colors">Skills</a>
+          <a href="#portfolio" class="font-montserrat text-[11px] font-semibold uppercase tracking-widest text-neutral-500 hover:text-black transition-colors">Portfolio</a>
+          <button onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})" class="font-montserrat text-[11px] font-semibold uppercase tracking-widest text-neutral-700 bg-white border-2 border-white rounded-full px-4 py-1.5 hover:bg-gray-100 transition-colors">Contact</button>
         </div>
+      </div>
 
-<!-- ABOUT SECTION -->
+      <!-- Hero text — centered vertically -->
+      <div class="max-w-[45%]">
+        <p class="font-montserrat text-[13px] text-neutral-500 mb-2">Hi, I am</p>
+        <h1 class="font-montserrat font-black text-[52px] text-neutral-900 leading-tight mb-2">John Dakshak</h1>
+        <p class="font-montserrat text-[12px] font-semibold tracking-widest text-sky-500 mb-8">Front-end Developer / Backend Developer</p>
 
-        <div class="text-white font-mono mt-20 border-2 border-purple-400 w-[1000px] justify-self-center p-10">
-
-            <div class="text-center leading-10">
-                <section id="about" class="font-bold text-4xl font-mono tracking-widest">ABOUT</section>
-                <article>A passionate freelance web developer dedicated to crafting exceptional digital <br> experiences with 1 year of experience in the industry. I've honed my skills in <br> designing and developing responsive, user-friendly websites that drive results.</article>
-            </div>
-
-            <div class="flex justify-center mt-10 ml-10 leading-10 gap-5">
-
-                <div>
-                    <span class="font-bold text-3xl font-mono tracking-widest">SERVICES</span>
-                    <ul class="list-disc w-[450px]">
-                        <li>Front-end development</li>
-                        <li>Responsive web design and mobile-first development</li>
-                        <li>E-commerce solutions using platforms like Shopify and WooCommerce</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <span class="font-bold text-3xl font-mono tracking-widest">Why Choose Me?</span>
-                    <ul class="list-disc w-[450px]">
-                        <li>Personalized attention to each project</li>
-                        <li>Agile development methodology for rapid iteration and delivery</li>
-                        <li>Clear communication and regular updates throughout the project</li>
-                        <li>Commitment to staying up-to-date with the latest web development trends and technologies</li>
-                    </ul>
-                </div>
-            </div>
+        <!-- Social icons -->
+        <div class="flex gap-4">
+          <a href="#" class="text-neutral-500 hover:text-neutral-800 transition-colors text-lg"><i class="fab fa-github"></i></a>
+          <a href="#" class="text-neutral-500 hover:text-neutral-800 transition-colors text-lg"><i class="fab fa-codepen"></i></a>
+          <a href="#" class="text-neutral-500 hover:text-neutral-800 transition-colors text-lg"><i class="fab fa-twitter"></i></a>
         </div>
-    </main>
+      </div>
+
+      <!-- Scroll down hint -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
+        <span class="font-montserrat text-[9px] uppercase tracking-[3px] text-neutral-400">Scroll</span>
+        <div class="w-px h-8 bg-neutral-400 animate-bounce"></div>
+      </div>
+    </div>
+
+    <!-- Person silhouette — fills right dark area -->
+    <div class="absolute right-0 bottom-0 z-20 flex items-end justify-center w-[50%] h-full">
+      <div class="relative flex flex-col items-center justify-end h-[85%]">
+        <!-- Head -->
+        <div class="w-28 h-28 rounded-full bg-gradient-to-br from-sky-200 to-sky-300 mb-1 border-2 border-white/20 flex-shrink-0"></div>
+        <!-- Body -->
+        <div class="w-52 rounded-t-xl bg-gradient-to-br from-sky-200 to-sky-400 flex-1 relative max-h-[65%]">
+          <div class="clip-collar absolute top-0 left-1/2 -translate-x-1/2 w-10 h-12 bg-white/80"></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about" class="bg-gray-100 px-10 py-16 text-center">
+    <span class="font-montserrat font-bold text-[14px] uppercase tracking-[3px] text-neutral-800 border border-neutral-800 px-8 py-2.5 inline-block">About Me</span>
+
+    <div class="divider mt-5 mb-2"><span class="font-montserrat text-[10px] text-gray-400 tracking-[3px] uppercase">about</span></div>
+
+    <p class="font-opensans text-[15px] text-gray-500 leading-relaxed text-center max-w-md mx-auto">
+    A passionate freelance web developer dedicated to crafting exceptional digital
+    experiences with 1 year of experience in the industry. I've honed my skills in
+    designing and developing responsive, user-friendly websites that drive results.
+    </p>
+
+    <div class="mt-5 mb-6">
+      <button class="font-montserrat font-bold text-[10px] uppercase tracking-[3px] text-neutral-700 border border-neutral-700 px-5 py-1.5 hover:bg-neutral-700 hover:text-white transition-colors">CV / PDF</button>
+    </div>
+
+    <div class="divider mb-6"><span class="font-montserrat text-[10px] text-gray-400 tracking-[3px] uppercase">SERVICES</span></div>
+
+    <div class="grid grid-cols-2 gap-6 max-w-lg mx-auto text-left mb-6">
+      <div class="flex flex-col gap-2.5">
+        <p class="font-montserrat font-bold text-[11px] uppercase tracking-[2px] text-neutral-800 mb-2">SERVICES</p>
+        <p class="font-opensans text-[11px] text-gray-500 leading-relaxed">Front-end development</p>
+        <p class="font-opensans text-[11px] text-gray-500 leading-relaxed">Responsive web design and mobile-first development</p>
+        <p class="font-opensans text-[11px] text-gray-500 leading-relaxed">E-commerce solutions using platforms like Shopify and WooCommerc</p>
+      </div>
+      <div class="flex flex-col gap-2.5">
+        <p class="font-montserrat font-bold text-[11px] uppercase tracking-[2px] text-neutral-800 mb-2">Why Choose Me?</p>
+        <p class="font-opensans text-[11px] text-gray-500 leading-relaxed">Personalized attention to each project</p>
+        <p class="font-opensans text-[11px] text-gray-500 leading-relaxed">Agile development methodology for rapid iteration and delivery</p>
+        <p class="font-opensans text-[11px] text-gray-500 leading-relaxed">Clear communication and regular updates throughout the project</p>
+        <p class="font-opensans text-[11px] text-gray-500 leading-relaxed">Commitment to staying up-to-date with the latest web development trends and technologies</p>
+      </div>
+    </div>
+
+    <!-- <div class="max-w-[280px] mx-auto text-left mb-6">
+      <p class="font-montserrat font-bold text-[11px] uppercase tracking-[2px] text-neutral-800 mb-2">Maintenance</p>
+      <p class="font-opensans text-[11px] text-gray-500 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div> -->
+
+    <div class="divider"><span class="font-montserrat text-[10px] text-gray-400 tracking-[3px] uppercase">skills</span></div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="bg-gray-100 px-10 pb-16 text-center">
+    <span class="font-montserrat font-bold text-[14px] uppercase tracking-[3px] text-neutral-800 border border-neutral-800 px-8 py-2.5 inline-block">Skills</span>
+
+    <div class="text-left max-w-sm mx-auto mt-7">
+      <p class="font-montserrat font-black text-[11px] uppercase tracking-[3px] text-neutral-500 mb-4">Using Now:</p>
+      <div class="grid grid-cols-4 gap-5 mb-8">
+        <div class="flex flex-col items-center gap-1.5">
+          <div class="w-12 h-12 bg-orange-600 rounded-md flex items-center justify-center text-white font-black text-lg">5</div>
+          <span class="font-montserrat font-semibold text-[9px] uppercase tracking-widest text-neutral-500">HTML</span>
+        </div>
+        <div class="flex flex-col items-center gap-1.5">
+          <div class="w-12 h-12 bg-blue-700 rounded-md flex items-center justify-center text-white font-black text-lg">3</div>
+          <span class="font-montserrat font-semibold text-[9px] uppercase tracking-widest text-neutral-500">CSS</span>
+        </div>
+        <div class="flex flex-col items-center gap-1.5">
+          <div class="w-12 h-12 bg-red-500 rounded-md flex items-center justify-center text-white font-black text-xs">Git</div>
+          <span class="font-montserrat font-semibold text-[9px] uppercase tracking-widest text-neutral-500">Git</span>
+        </div>
+        <div class="flex flex-col items-center gap-1.5">
+          <div class="w-12 h-12 bg-violet-500 rounded-md flex items-center justify-center text-white font-black text-lg">F</div>
+          <span class="font-montserrat font-semibold text-[9px] uppercase tracking-widest text-neutral-500">Figma</span>
+        </div>
+        <div class="flex flex-col items-center gap-1.5">
+          <div class="w-12 h-12 bg-green-700 rounded-md flex items-center justify-center text-white font-black text-sm">P</div>
+          <span class="font-montserrat font-semibold text-[9px] uppercase tracking-widest text-neutral-500">Python</span>
+        </div>
+        <div class="flex flex-col items-center gap-1.5">
+          <div class="w-12 h-12 bg-blue-600 rounded-md flex items-center justify-center text-white font-black text-sm">M</div>
+          <span class="font-montserrat font-semibold text-[9px] uppercase tracking-widest text-neutral-500">MySQL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-gray-100 px-10 py-16 text-center">
+    <span class="font-montserrat font-bold text-[14px] uppercase tracking-[3px] text-neutral-800 border border-neutral-800 px-8 py-2.5 inline-block">Contact</span>
+
+    <p class="font-opensans text-[12px] text-gray-500 leading-relaxed max-w-md mx-auto mt-5 mb-1">
+      I am available for freelancing work. Connect me via phone:
+      <a href="tel:+48000000000" class="text-sky-500 hover:underline">+48 000 000 000</a>
+      or email:
+      <a href="mailto:hello@johndakshak.com" class="text-sky-500 hover:underline">hello@johndakshak.com</a>
+    </p>
+    <p class="font-montserrat text-[10px] text-gray-300 tracking-[3px] uppercase mt-4 mb-6">Send Me A Message</p>
+
+    <div class="max-w-sm mx-auto text-left">
+      <input type="text" placeholder="Your Name"
+        class="w-full bg-transparent border-0 border-b border-gray-300 py-2 font-opensans text-[12px] text-neutral-600 placeholder-gray-300 outline-none mb-4 focus:border-sky-400 transition-colors" />
+      <input type="email" placeholder="Email Address"
+        class="w-full bg-transparent border-0 border-b border-gray-300 py-2 font-opensans text-[12px] text-neutral-600 placeholder-gray-300 outline-none mb-4 focus:border-sky-400 transition-colors" />
+      <input type="text" placeholder="Subject"
+        class="w-full bg-transparent border-0 border-b border-gray-300 py-2 font-opensans text-[12px] text-neutral-600 placeholder-gray-300 outline-none mb-4 focus:border-sky-400 transition-colors" />
+      <textarea placeholder="Your message here..." rows="4"
+        class="w-full bg-transparent border-0 border-b border-gray-300 py-2 font-opensans text-[12px] text-neutral-600 placeholder-gray-300 outline-none resize-none mb-4 focus:border-sky-400 transition-colors"></textarea>
+      <div class="text-center mt-2">
+        <button class="font-montserrat font-bold text-[11px] uppercase tracking-[3px] text-neutral-700 border border-neutral-700 px-7 py-2 hover:bg-neutral-700 hover:text-white transition-colors">Contact</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-neutral-900 py-6 text-center">
+    <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;"
+      class="font-montserrat text-[9px] text-neutral-600 tracking-[3px] uppercase hover:text-neutral-400 transition-colors block mb-3">Back to top ↑</a>
+    <div class="flex justify-center gap-4 mb-3">
+      <a href="#" class="text-gray-500 hover:text-white transition-colors text-sm"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="text-gray-500 hover:text-white transition-colors text-sm"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="text-gray-500 hover:text-white transition-colors text-sm"><i class="fab fa-github"></i></a>
+      <a href="#" class="text-gray-500 hover:text-white transition-colors text-sm"><i class="fab fa-twitter"></i></a>
+    </div>
+    <p class="font-opensans text-[10px] text-neutral-600">© John Dakshak 2024 – All rights reserved</p>
+  </footer>
 </body>
 </html>
